@@ -60,10 +60,14 @@ body {
 }
 
 .form-container {
+    padding: 35px 40px 40px;
+    color: var(--white);
+    border-radius: 10px;
+    background-color: #000;
     background: black;
     padding: 20px;
     border-radius: 10px;
-    max-width: 350px;
+    max-width: 450px;
     text-align: center;
 }
 
@@ -170,16 +174,35 @@ button:hover {
                 url('../images/hero-bg.jpg') center/cover;
 }
 
-/* Features Section */
-.features-section {
-    padding: 60px 0;
-    background: #f8f9fa;
+.card-conatiner {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
-
+.card {
+    background-color: black;
+    color: white;
+    width: 380px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.icon {
+    color: #cddc39;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    .grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
