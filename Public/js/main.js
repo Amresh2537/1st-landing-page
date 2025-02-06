@@ -10,7 +10,7 @@ document.querySelector("#contactForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:5000/send-email", {
+        const response = await fetch("/api/send-email", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
@@ -18,6 +18,11 @@ document.querySelector("#contactForm").addEventListener("submit", async (e) => {
 
         const data = await response.json();
         document.querySelector("#responseMessage").textContent = data.message;
+        
+        // Clear form after successful submission
+        if (response.ok) {
+            document.querySelector("#contactForm").reset();
+        }
     } catch (error) {
         document.querySelector("#responseMessage").textContent = "Error sending email!";
     }
