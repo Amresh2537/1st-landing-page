@@ -4,9 +4,7 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
-
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -36,10 +34,10 @@ app.post("/send-email", async (req, res) => {
         await transporter.sendMail(mailOptions);
         res.status(200).json({ message: "Your Enquiry sent successfully!" });
     } catch (error) {
+        console.error("Error sending email:", error); // Log error for debugging
         res.status(500).json({ error: "Failed to send email" });
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// Ensure Vercel recognizes this as a serverless function
+module.exports = app;
