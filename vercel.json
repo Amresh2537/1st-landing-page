@@ -1,13 +1,19 @@
 {
     "version": 2,
-    "rewrites": [
+    "functions": {
+      "api/*.js": {
+        "memory": 1024,
+        "maxDuration": 10
+      }
+    },
+    "routes": [
       {
-        "source": "/api/(.*)",
-        "destination": "/api"
+        "src": "/api/send-email",
+        "dest": "/api/send-email.js"
       },
       {
-        "source": "/(.*)",
-        "destination": "/"
+        "src": "/(.*)",
+        "dest": "/public/$1"
       }
     ]
   }
